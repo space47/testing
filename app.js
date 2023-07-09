@@ -64,8 +64,7 @@ app.use("/api/v1/orders",authenticateUser,orderRouter)
 
 // middleware
 app.use(notFoundMiddleware);
-// app.use(errorHandlerMiddleware);
-
+app.use(errorHandlerMiddleware);
 const port = process.env.PORT || 5000;
 
 const start = async () => {
