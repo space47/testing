@@ -43,7 +43,6 @@ app.use(morgan("tiny"));
 app.use(express.json());
 //using jwt_secret to again parse signed cookie to token
 app.use(cookieParser(process.env.JWT_SECRET));
-// app.use(express.static('./public'))
 app.use(fileUpload())
 
 // swagger
