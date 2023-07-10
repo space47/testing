@@ -43,13 +43,25 @@ app.use(morgan("tiny"));
 app.use(express.json());
 //using jwt_secret to again parse signed cookie to token
 app.use(cookieParser(process.env.JWT_SECRET));
-app.use(express.static('./public'))
+// app.use(express.static('./public'))
 app.use(fileUpload())
 
+// swagger
+const swaggerUI = require('swagger-ui-express')
+const YAML = require('yamljs')
+const swaggerDocument = YAML.load('./swagger.yaml')
+
 // route
-app.get("/", (req, res) => {
-  res.send("E commerce");
-});
+// app.get("/", (req, res) => {
+//   res.send("E commerce");
+// });
+
+app.get('/',(req,res)=> {
+  res.send('<h1>E-Comm</h1><a href = "/api-docs">Document</a>')
+})
+
+app.use('/api-docs',swaggerUI.serve, swaggerUI.setup(swaggerDocument))
+
 app.get("/api/v1", (req, res) => {
   // if signed during creation then have to use .signedcookie
   console.log(req.signedCookies);
