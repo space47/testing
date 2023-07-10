@@ -52,11 +52,11 @@ const YAML = require('yamljs')
 const swaggerDocument = YAML.load('./swagger.yaml')
 
 // route
-// app.get("/", (req, res) => {
-//   res.send("E commerce");
-// });
+app.get("/", (req, res) => {
+  res.send("E commerce");
+});
 
-app.get('/',(req,res)=> {
+app.get('/a',(req,res)=> {
   res.send('<h1>E-Comm</h1><a href = "/api-docs">Document</a>')
 })
 
